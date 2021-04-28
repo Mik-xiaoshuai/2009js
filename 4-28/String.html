@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str="HELLO world"
+    console.log(str.endsWith("d"))  //true  判断一个字符串的是否以给定字符串结尾，结果返回布尔值。
+    console.log(str.startsWith("he"))  //true  判断字符串的起始位置是否匹配其他字符串中的字符。
+    console.log(str.includes("orss"))  //false 判断一个字符串里是否包含其他字符串。
+    console.log(str.indexOf("o"))  //4   从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1
+    console.log(str.indexOf("or"))  //7   从字符串对象中返回首个被发现的给定值的索引值，如果没有找到则返回-1
+    console.log(str.lastIndexOf("w"))  //6   从字符串对象中返回最后一个被发现的给定值的索引值，如果没有找到则返回-1。
+    console.log(str.padEnd(14,"q"))   //后面加三位   在当前字符串尾部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串。
+    console.log(str.padStart(14,"q"))  //前面加三位  在当前字符串头部填充指定的字符串， 直到达到指定的长度。 返回一个新的字符串。
+    console.log(str.toLowerCase())   //将字符串转换成小写并返回。
+    console.log(str.toUpperCase())   //将字符串转换成大写并返回。
+</script>
+</body>
+</html>
