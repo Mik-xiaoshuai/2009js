@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // var arr=[11,22,33,44,55,66,77]
+    // Array.prototype.trim=function () {
+    //     this.pop()  //去除末尾元素
+    //     this.shift() //去除开头的元素
+    // }
+    // console.log(arr)  //获取所有
+    // arr.trim()
+    // console.log(arr)  //获取去掉两端
+
+
+    var arr=[11,22,33,55,66,11,88,77,66]
+
+    var total=0
+    arr.forEach(function (v) {
+        total+=v
+    })
+    console.log(total)  //总和
+
+    function getPos(arr,x) {
+        var pos=[]  //保存元素的位置
+        arr.forEach(function (v,k) {
+            if(v==x){
+                console.log(k)
+                pos.push(k)
+            }
+        })
+    }
+    console.log(getPos(arr,22))  //1
+    console.log(getPos(arr,55))  //3
+    console.log(getPos(arr,66))  //4,8
+
+
+</script>
+</body>
+</html>
