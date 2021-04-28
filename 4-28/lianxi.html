@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button class="b1">A</button>
+    <button class="b1">B</button>
+    <button class="b1">C</button>
+    <button class="b1">D</button>
+    <button class="b1">E</button>
+</body>
+</html>
+<script>
+    var b1=document.querySelectorAll(".b1");
+    for(var i=0;i<b1.length;i++){
+        b1[i].index=i;
+        // console.log(i)   //获取所有的下标
+        // console.log(b1[i])   //获取所有的数据
+        b1[i].onclick=function(){
+            alert(this.index)
+        }
+    }
+</script>
