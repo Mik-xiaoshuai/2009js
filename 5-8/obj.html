@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+ // let a=111
+ //    function f(a) {
+ //        console.log(a)
+ //        a=222
+ //        console.log(a)
+ //    }
+ //    a=333
+ //    console.log(a)   //333  333  222
+ //    f(a)
+
+
+ //    var arr=[11,22,33,44]
+ //    function f(...args) {
+ //        console.log(...args)  //11 22 33 44
+ //    }
+ //    f(...arr)
+
+
+ // (function () {
+ //     return typeof arguments;
+ // })  //object
+    // var add=(function () {
+    //     return function () {
+    //         var counter=0;
+    //         return (counter+=1);
+    //     }
+    // })()
+    // add()
+    // add()
+    // console.log(add())  //1
+
+
+
+ //    var fun=function () {
+ //        console.log(1)
+ //    }
+ //    function fun(){
+ //        console.log(2);  //1
+ // }
+ //    fun()
+
+
+    // if(!("a" in window)){
+    //     var a=12
+    // }
+    // console.log(a)   //undefined
+
+
+    // var name="cat"
+    // var obj={
+    //     name:"dog",
+    //     getName:function () {
+    //         this.name="mouse";
+    //         return (function () {
+    //             return this.name;
+    //         })();
+    //     }
+    // }
+    // console.log(obj.getName())  //""
+
+
+
+    // function Person() {
+    //     this.age=20;
+    // }
+    // Person.prototype.age=30;
+    //
+    // Person.prototype.getAge=function () {
+    //     return this.age;
+    // }
+    // var p=new Person();
+    // console.log(p.getAge())  //20
+
+
+
+    // function Foo() {
+    //     console.log(a)  //undefined
+    //     var a="hello";
+    //     console.log(a)  //hello
+    // };
+    // Foo()
+
+
+
+    // function func(n,o) {
+    //     console.log(o)
+    //     return{
+    //         func:function (m) {
+    //             return func(m,n)
+    //         }
+    //     };
+    // }
+    // var a=func(0);a.func(1);a.func(2);a.func(3)  //undefined  0 0 0
+
+
+
+    // function a() {
+    //     var i=0;
+    //     function b() {
+    //         i++;
+    //         console.log(i) //1 2 3
+    //     }
+    //     return b;
+    // }
+    // var c=a();
+    // c()
+    // c()
+    // c()
+
+
+
+ // (function () {
+ //     var a=10;
+ //     if(a>5){
+ //         a=7;
+ //     }
+ //     alert(a)  //7
+ // })();
+
+
+
+ // (function (num) {
+ //     console.log(num)  //111
+ // })(111)
+
+
+    // var a={"x":0}
+    // var b=a;
+    // a.x=1;
+    // console.log(b.x)  //1
+
+    // console.log(Object.prototype.__proto__)  //null
+
+
+
+    // var b;
+    // function fun() {
+    //     b="change";
+    // }
+    // console.log(b)  //undefined
+    // fun();
+    // console.log(b)  //change
+
+
+
+    // function fun(a,b,...args) {
+    //     console.log(args)
+    // }
+    // fun(11,22,33,44)  //[33,44]
+
+
+
+    // say();
+    // function say() {
+    //     console.log("hello")  //hello
+    // }
+
+
+
+    // function test() {
+    //     b();
+    //     var a=1;
+    //     function b() {
+    //         console.log(1)  //1
+    //         console.log(a)  //undefined
+    //         var a=2
+    //     }
+    // }
+    // test()
+
+
+
+    // function getFunc() {
+    //     var a=7;
+    //     return function (b) {
+    //         alert(a+b)  //12
+    //     }
+    // }
+    // var f=getFunc();
+    // f(5);
+
+
+
+    // console.log(a)
+    // a="hello"
+    // function fn() {
+    //     console.log(a)
+    //     a=12
+    // }
+    // fn()
+    // console.log(a)  //报错
+
+
+
+    // var animal="dog";
+    // function sayAnimal() {
+    //     ainmal="cat";
+    //     function animal() {}
+    //         console.log(animal.toString())  //cat
+    // }
+    // sayAnimal()
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let obj={
+        name:"高三个金",
+        age:11,
+        email:"高三个金@qq.com"
+    };
+    //为obj添加iterator接口 接口在symbol.iterator属性中
+    obj[Symbol.iterator]=function(){
+        //object.keys()获取的是obj的key是一个数组
+        let key=Object.keys(this)
+        let index=0;
+        return{
+            next(){
+                if(index <key.length){
+                    return{
+                        value:obj[key[index++]],
+                        done:false
+                    }
+                }else{
+                    return{
+                        value:undefined,
+                        done:true
+                    }
+                }
+            }
+        }
+    }
+    for(let i of obj){
+        console.log(i)
+    }
+</script>
+</body>
+</html>
