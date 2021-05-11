@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.2.6.12.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="btn">CLICK</button>
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",  //挂载点
+        data:{
+
+        },
+        methods:{
+            btn(){
+                alert(1111)
+            }
+        },
+    })
+
+    // var btn=document.querySelector("button")
+    // btn.onclick=function () {
+    //     alert(111)
+    // }
+// var btn=document.getElementsByTagName("button")
+//     onclick=function () {
+//         alert(111)
+//     }
+</script>
