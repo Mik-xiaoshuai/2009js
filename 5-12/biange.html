@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .grid {
+            margin: auto;
+            width: 530px;
+            text-align: center;
+        }
+        .grid table {
+            border-top: 1px solid #C2D89A;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .grid th,td {
+            padding: 10px;
+            border: 1px dashed #F3DCAB;
+            height: 35px;
+            line-height: 35px;
+        }
+        .grid th {
+            background-color: #F3DCAB;
+        }
+        .grid .book {
+            padding-bottom: 10px;
+            padding-top: 5px;
+            background-color: #F3DCAB;
+        }
+        .grid .total {
+            height: 30px;
+            line-height: 30px;
+            background-color: #F3DCAB;
+            border-top: 1px solid #C2D89A;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="grid">
+        <div>
+            <h1>图书管理</h1>
+            <div class="book">
+                <div>
+                    <label for="id">
+                        编号：
+                    </label>
+                    <input type="text" id="id" v-model="id">
+                    <label for="name">
+                        名称：
+                    </label>
+                    <input type="text" id="name" v-model="name">
+                    <button @click="ti(id,name,dd)">提交</button>
+                </div>
+            </div>
+        </div>
+        <div class="total">
+            <span>图书总数：</span>
+            <span>{{total}}</span>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr :key='item.id' v-for='(item,index) in books'>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.time}}</td>
+                <td>
+                    <a href="javascript:;" @click.prevent="update(item)">修改</a>
+                    <span>|</span>
+                    <a href="javascript:;" @click.prevent="del(index)">删除</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script src="../vue.2.6.12.js"></script>
+<script src="../axios.min.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: "#app",
+        data:{
+            dd:"",
+            id:"",
+            name:"",
+            books:[],
+            flset : false,
+        },
+        methods:{
+            ti(dd,cc){
+               if(this.flset){
+                   console.log(this.id);
+                   console.log(dd);
+                   console.log(cc);
+                     if(this.id==dd){
+                         this.name=cc;
+                         return  true;
+                     }
+                   flset = false;
+               }else{
+                   let Data = new Date();
+                   let y = Data.getFullYear();
+                   let m = Data.getMonth();
+                   let s = Data.getDate();
+                   let yms = `${y}-${m+1}-${s}`;
+                   // console.log(yms);
+                   let new_book = {};
+                   new_book.id = this.id;
+                   new_book.name = this.name;
+                   new_book.time = yms;
+                   this.books.push(new_book);
+                   this.id = "";
+                   this.name = "";
+               }
+                this.id = "";
+                this.name = "";
+            },
+            del(id){
+                // console.log(id);
+                this.books.splice(id,1);
+            },
+
+            update(id){
+                this.flset =true;
+                this.id = id.id;
+                this.name = id.name;
+            }
+        },
+        computed:{
+            total(){
+                return this.books.length
+            }
+        },
+        created(){
+            let url = "http://vue.api.comcto.com/api/books.php";
+            let self = this;
+            axios.get(url).then(res => {
+                self.books = res.data;
+                // console.log(res.data);
+            })
+        }
+
+    })
+</script>
+</html>

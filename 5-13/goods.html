@@ -42,11 +42,11 @@
                     <label for="id">
                         编号：
                     </label>
-                    <input type="text" id="id" v-model="a">
+                    <input type="text" id="id" v-model="bookid" v-bind:disabled="status">
                     <label for="name">
                         名称：
                     </label>
-                    <input type="text" id="name" v-model="b">
+                    <input type="text" id="name" v-model="bookname">
                     <button @click="btn">提交</button>
                 </div>
             </div>
@@ -61,12 +61,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item,k) in list">
+            <tr v-for="(item,k) in list" :key="item.id">
                 <td>{{item.id}}</td>
                 <td>{{item.name}}</td>
                 <td>{{item.time}}</td>
                 <td>
-                    <a href="javascript:;" @click.prevent="edit(item.id)">修改</a>
+                    <a href="javascript:;" @click.prevent="edit(k)">修改</a>
                     <span>|</span>
                     <a href="javascript:;" @click.prevent="del(item.id)">删除</a>
                 </td>
@@ -81,29 +81,12 @@
     new Vue({
         el:"#app",   //挂载点
         data:{
-            a:"",
-            b:"",
+            status:false,   //disabled 默认为可用状态
+            bookid:"",
+            bookname:"",
             list:[],
         },
         methods:{   //方法
-            //添加
-            btn(){
-                let obj={};
-                obj.id=this.a;
-                obj.name=this.b;
-
-                let now=new Date();
-                let y=now.getFullYear();  //获取年
-                // console.log(y)
-                let m=now.getMonth(); //获取月
-                // console.log(m)
-                let d = now.getDate() //获取日
-                // console.log(d)
-                let ymd=`${y}-${m+1}-${d}`;
-                // console.log(ymd)
-                obj.time=ymd
-                this.list.push(obj)
-            },
             //删除
             del(id){
                 var index = this.list.findIndex(item =>{
@@ -113,10 +96,69 @@
                 });
                 this.list.splice(index,1)
             },
+            //添加
+            btn(){
+                let obj={};
+                obj.id=this.a;
+                obj.name=this.b;
+                this.list.push(obj);
+
+                //获取年月日
+                let now=new Date();
+                let y=now.getFullYear();  //获取年
+                // console.log(y)
+                let m=now.getMonth(); //获取月
+                // console.log(m)
+                let d = now.getDate(); //获取日
+                // console.log(d)
+                let ymd=`${y}-${m+1}-${d}`;
+                // console.log(ymd)
+                obj.time=ymd
+
+
+                //判断是修改还是添加？
+                console.log("status:",this.status)
+                if(this.status){    //修改
+                    let id=this.bookid
+                    let name=this.bookname
+                    console.log("要修改的内容：",id,name)
+
+                    //遍历list找到id=this.bookid
+                    this.list.forEach(function(v,k){
+                        if(v.id==id){    //找到要更新的元素
+                            console.log("找到了要更新的数据：",v)
+                            v.name=name
+                        }
+                    })
+
+                    //清空input
+                    this.bookid=null
+                    this.bookname=null
+                    this.status=false
+                }else{
+                   //获取input中的值
+                   let book_info={
+                       id:this.bookid,
+                       name:this.bookname,
+                       time:ymd
+                   }
+                   this.list.push(book_info)
+                }
+                this.bookid=null
+                this.bookname=null
+
+            },
             //修改
-            edit(id){
+            edit(i){
                 // alert(1)
-                console.log(id);
+                console.log("要修改的数据索引为",i)
+                console.log("要修改的数据为：",this.list[i])
+                //将数据填充到input中
+                this.bookid=this.list[i].id;
+                this.bookname=this.list[i].name
+
+                //禁止修改 bookid
+                this.status=true
             }
 
         },
