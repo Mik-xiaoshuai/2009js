@@ -101,7 +101,6 @@
                 let obj={};
                 obj.id=this.a;
                 obj.name=this.b;
-                this.list.push(obj);
 
                 //获取年月日
                 let now=new Date();
@@ -117,16 +116,16 @@
 
 
                 //判断是修改还是添加？
-                console.log("status:",this.status)
+                // console.log("status:",this.status)
                 if(this.status){    //修改
                     let id=this.bookid
                     let name=this.bookname
-                    console.log("要修改的内容：",id,name)
+                    // console.log("要修改的内容：",id,name)
 
                     //遍历list找到id=this.bookid
                     this.list.forEach(function(v,k){
                         if(v.id==id){    //找到要更新的元素
-                            console.log("找到了要更新的数据：",v)
+                            // console.log("找到了要更新的数据：",v)
                             v.name=name
                         }
                     })
@@ -150,9 +149,8 @@
             },
             //修改
             edit(i){
-                // alert(1)
-                console.log("要修改的数据索引为",i)
-                console.log("要修改的数据为：",this.list[i])
+                // console.log("要修改的数据索引为",i)
+                // console.log("要修改的数据为：",this.list[i])
                 //将数据填充到input中
                 this.bookid=this.list[i].id;
                 this.bookname=this.list[i].name
