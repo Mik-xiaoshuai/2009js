@@ -143,7 +143,9 @@
                 this.status=true
             }
         },
-        created(){
+        //遍历数组
+        created(){   //生命周期
+          //获取所有的数据
             let self=this
             let api_url="http://localhost:3001/user/list"
             axios.get(api_url).then(function(d){

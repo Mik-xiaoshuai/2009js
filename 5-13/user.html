@@ -61,7 +61,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(item,k) in list" :key="item.id">
+            <tr v-for="(item,k) in list" v-bind:key="item.user_id">
                 <td>{{item.user_id}}</td>
                 <td>{{item.user_name}}</td>
                 <td>{{item.email}}</td>
@@ -82,19 +82,18 @@
         el:"#app",   //挂载点
         data:{
             status:false,   //disabled 默认为可用状态
-            userid:"",
-            username:"",
+            userid:null,
+            username:null,
             list:[],
         },
         methods:{
-
             //增加
             add(k){
                 let self=this
 
-                let obj={};
-                obj.user_id=this.userid;
-                obj.user_name=this.username;
+                // let obj={};
+                // obj.user_id=this.userid;
+                // obj.user_name=this.username;
                 //通过判断状态判断是修改还是添加?
                 if(this.status){
                     let user_info={
@@ -148,10 +147,10 @@
         //遍历数组
         created(){   //生命周期
             //获取所有的数据
-            let _this=this;
+            let self=this;
             axios.get("http://localhost:3000/user/list").then(function(d){
                 // console.log(d.data[0].id)
-                _this.list=d.data
+                self.list=d.data
             });
         },
     });
