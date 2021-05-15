@@ -19,8 +19,8 @@
 
 <script>
     new Vue({
-        el: "#app",
-        data:{
+        el: "#app",   //挂载点
+        data:{  //数据
             username:null,
             useremail:null,
             mobile:null,
@@ -29,7 +29,7 @@
             pass2:null,
             regstatus:true,
         },
-        methods:{
+        methods:{  //方法
             regist(){
                 //获取input中的用户输入
                 let uesr_inof={
@@ -47,7 +47,7 @@
                 })
             }
         },
-        computed:{},
+        computed:{},  //计算属性
         //侦听器
         watch:{
             username(v){
@@ -66,6 +66,7 @@
                     }
                 })
             },
+            //验证邮箱
             useremail(v){
                 let hello = "http://localhost:3001/check/email?email=" + v
                 console.log(hello);
