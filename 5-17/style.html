@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue.2.6.12.js"></script>
+    <style>
+        .pcolor{
+            color:red;
+        }
+        .psize{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <p v-bind:class="{pcolor:pc,psize:ps}">hello world</p>
+    <button v-on:click="changeColor">改变颜色</button>
+    <button v-on:click="changeSize">改变字体</button>
+</div>
+
+</body>
+</html>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+          pc:true,   //pcolor:pc 中的pc  true表示应用样式
+          ps:false,  //psize:ps  中的ps  false表示应用的样式
+        },
+        methods:{
+            changeColor(){
+              this.pc=!this.pc
+            },
+            changeSize(){
+                this.ps=!this.ps
+            }
+        },
+    })
+</script>

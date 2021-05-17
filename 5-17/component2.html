@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>局部组件</title>
+    <script src="../vue.2.6.12.js"></script>
+</head>
+<body>
+<div id="app">
+<hello-world1></hello-world1>
+    <hr>
+<hello-world2></hello-world2>
+</div>
+</body>
+</html>
+<script>
+    //组件cA
+    let cA={
+        data(){  //组件数据
+            return{
+                msg1:"AAAAA",
+            }
+        },
+        //组件模板
+        template:`
+        <div>
+            <p>hello 111</p>
+            <p>{{msg1}}</p>
+        </div>
+
+      `,
+    };
+    //组件cB
+    let cB={
+        methods:{  //组件方法
+            btn1(){
+                alert("我是组件cB")
+            }
+        },
+        //组件模板
+        template:`
+        <div>
+            <p>hello 222</p>
+            <button @click="btn1">BTN1</button>
+        </div>
+
+      `,
+    };
+    //创建Vue实列
+    new Vue({
+        el:"#app",  //挂载点
+        data:{},  //数据
+        components:{
+            "hello-world1":cA,
+            "hello-world2":cB,
+        },
+    })
+</script>
