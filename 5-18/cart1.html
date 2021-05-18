@@ -108,7 +108,7 @@
     //头部组件
     let Carthead={
       template:`
-        <div class="title">张三购物车</div>
+        <div class="title">张三的购物车</div>
       `,
     };
 
@@ -124,18 +124,18 @@
         },
       template:`
         <div>
-                <div class="item" v-for="(item,k) in xxx" :key="item.goods_id">
-                    <img src="a.jpg"/>
-                    <div class="name">{{ item.goods_name.substr(0,5)+"..." }}</div>
-                    <div class="price">{{ item.shop_price }}</div>
-                    <div class="change">
-                        <a href="" @click.prevent="$emit('del-number',k)">－</a>
-                        <input type="text" class="num" @blur="ChangeNum(k,$event)" :value="item.number" />
-                        <a href="" @click.prevent="$emit('add-number',k)">＋</a>
-                    </div>
-                    <div class="del" @click.prevent="$emit('del-sc',k)">×</div>
-                </div>
-            </div>
+           <div class="item" v-for="(item,k) in xxx" :key="item.goods_id">
+               <img src="a.jpg"/>
+               <div class="name">{{ item.goods_name.substr(0,5)+"..." }}</div>
+               <div class="price">{{ item.shop_price }}</div>
+               <div class="change">
+                   <a href="" @click.prevent="$emit('del-number',k)">－</a>
+                   <input type="text" class="num" @blur="ChangeNum(k,$event)" :value="item.number" />
+                   <a href="" @click.prevent="$emit('add-number',k)">＋</a>
+               </div>
+               <div class="del" @click.prevent="$emit('del-sc',k)">×</div>
+           </div>
+        </div>
       `,
     };
 
