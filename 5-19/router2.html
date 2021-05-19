@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.2.6.12.js"></script>
+    <script src="../js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-view></router-view>
+
+    <div>
+        <router-link to="/User">注册</router-link>
+        <router-link to="/Login">登录</router-link>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    //定义两个组件
+    const Login={
+      template:`
+       <p>登录组件</p>
+      `
+    };
+    const User={
+        template:`
+          <p>注册组件</p>
+        `
+    };
+    const xxx=[
+        {path:"/",redirect:"/Login"},
+        {path:"/Login",component:Login},
+        {path:"/User",component:User},
+    ];
+
+
+    const router=new VueRouter({
+        routes:xxx
+    })
+
+    new Vue({
+        el:"#app",
+        router
+    })
+</script>
