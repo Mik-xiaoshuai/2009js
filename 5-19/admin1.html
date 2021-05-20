@@ -116,7 +116,7 @@
   const App={
     template:`
       <div>
-          <header class="header">XX后台管理系统</header>
+          <header class="header">91  后台管理系统</header>
             <div class="main">
             <div class="content left">
             <ul>
@@ -135,6 +135,22 @@
             </div>
             <footer class="footer">版权信息</footer>
             </div>
+      </div>
+    `,
+  };
+  const Users={
+    template:`
+      <div>
+           <router-view></router-view>
+           <table>
+           <thead>
+           <th>编号</th>
+           <th>姓名</th>
+           <th>Email</th>
+           <th>手机号</th>
+           <th>操作</th>
+           </thead>
+           </table>
       </div>
     `,
   };
@@ -165,9 +181,9 @@
   //路由规则
   const routes=[
     {path:"/",component:App,children:[
-        // {path:"/Users",component:Users,children:[
-        //     {path:"/edit/:uid",component:EditUser,props:true}
-        //   ]},
+        {path:"/Users",component:Users,children:[
+            {path:"/edit/:uid",component:EditUser,props:true}
+          ]},
         {path:"/Privs",component:Privs},
         {path:"/Goods",component:Goods},
         {path:"/Orders",component:Orders},
