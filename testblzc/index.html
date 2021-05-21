@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/vue.2.6.12.js"></script>
+    <script src="./js/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="top">
+            姓名： <input type="text" v-model="name" placeholder="审批人">
+            年龄： <input type="text" v-model="age" placeholder="审批人">
+            工作： <input type="text" v-model="gongzuo" placeholder="审批人">
+            民族： <input type="text" v-model="minzu" placeholder="审批人" >
+            <button id="butto" @click="but">添加</button>
+            <br>
+            <a href="" id="delet" @click="shanchu(name)">删除</a>
+            <br>
+            <table border="1" cellspacing="0">
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>工作</td>
+                    <td>民族</td>
+                    <td>操作</td>
+                </tr>
+                <tr v-for="item in arr">
+                    <td><input type="checkbox"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.age}}</td>
+                    <td>{{item.gongzuo}}</td>
+                    <td>{{item.minzu}}</td>
+                    <td><a href="javascript:;" @click="del(item.name)">移除</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+    new Vue({
+        el : "#app",
+        data : {
+            arr : [],
+            name : "",
+            age : "",
+            gongzuo : "",
+            minzu : "",
+        },
+        methods : {
+            // 添加
+            but(){
+                    let obj = {};
+                    obj.name = this.name;
+                    obj.age = this.age;
+                    obj.gongzuo = this.gongzuo;
+                    obj.minzu = this.minzu;
+                    this.arr.push(obj);
+                    // console.log(obj)
+                },
+            // 删除
+            del(name){
+                var index = this.arr.findIndex(item =>{
+                    if(item.name == name){
+                        return true
+                    }
+                });
+                this.arr.splice(index,1);
+            },
+
+            // 批量删除
+            shanchu(name){
+               console.log(this.name)
+            }
+        },
+    })
+</script>

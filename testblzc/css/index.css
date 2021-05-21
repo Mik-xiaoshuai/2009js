@@ -1,0 +1,33 @@
+a{
+    text-decoration: none;
+    color: red;
+}
+#top{
+    float: left;
+    margin-left: 300px;
+}
+
+#butto{
+    background-color: #2EB9F7;
+    border:1px solid #2EB9F7;
+    color: #fff;
+    border-radius: 5px 5px;
+}
+
+#delet{
+    width: 60px;
+    height: 25px;
+    background-color: red;
+    border:1px solid red;
+    color: #fff;
+    border-radius: 5px 5px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+table{
+    width: 930px;
+    margin-top: 20px;
+}
